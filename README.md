@@ -27,6 +27,8 @@ You can also install ``fsm`` from source.
 
 ## Usage 
 
+The Mod-Three and Mod-Five Finite Automata (FA) have been implemented using this library in two different ways. A brief overview of each implementation is provided below, with detailed code available in the /examples directory. Similarly, you can use this library to create your own custom FA.
+
 ### Implementation of Mod-Three FA by configuring the FSM by specifying the 5-tuples
 Mod-Three FA has been configured using 5-tuple and functionality has been implemented using this library  (Refer examples/mod3.py for more details)
 ```python
@@ -47,6 +49,8 @@ Mod-Three FA has been configured using 5-tuple and functionality has been implem
 ```
 
 ### Implementation of Mod-Five FA using the automated way to generate the 5-tuples
+5-tuples were generated automatically by this library by passing the value (5)
+(Refer examples/mod5.py for more details)
 ```python
     fa = ModFiveFA()
     input1 = "10111"  # 23 in decimal -> 23 % 5 = 3
@@ -67,4 +71,10 @@ Mod-Three FA has been configured using 5-tuple and functionality has been implem
 
 ## Assumptions
 
+* Configuring the FSM using 5-tuples does not inherently result in an infinite loop. It is assumed that the provided transition function is well-defined and does not lead to infinite loops during execution.
+
 ## RoadMap
+
+ - [ ] Add pull request templates
+
+ - [ ] Restrict direct commits to the main branch; allow changes only via pull request merges
