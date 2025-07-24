@@ -73,7 +73,7 @@ Mod-Three FA has been configured using 5-tuple and functionality has been implem
 
 * Configuring the FSM using 5-tuples does not inherently result in an infinite loop. It is assumed that the provided transition function is well-defined and does not lead to infinite loops during execution.
 
-## RoadMap
+## Pending Tasks
 
  - [ ] Add pull request templates
 
