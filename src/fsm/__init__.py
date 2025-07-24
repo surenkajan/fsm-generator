@@ -1,4 +1,4 @@
-from .core import FiniteAutomaton
+from .core import FiniteAutomaton, build_mod_n_fa
 from .exceptions import FSMError, InvalidStateError, InvalidSymbolError, ModulusError
 from .logger import logger
 
