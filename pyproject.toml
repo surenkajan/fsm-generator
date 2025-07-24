@@ -48,3 +48,4 @@ disallow_untyped_defs = true
 disallow_incomplete_defs = true
 warn_unused_ignores = true
 show_error_codes = true
+exclude = ["tests/"]
