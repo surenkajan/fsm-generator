@@ -1,4 +1,4 @@
-from .exceptions import InvalidStateError, InvalidSymbolError
+from .exceptions import InvalidStateError, InvalidSymbolError, ModulusError
 from .logger import logger
 
 
@@ -85,3 +85,26 @@ class FiniteAutomaton:
         final_state = self.run(input_str)
         return final_state in self.final_states
 
+def build_mod_n_fa(n: int) -> FiniteAutomaton:
+    """Builds a finite automaton that computes the modulus of binary numbers by n.
+    :param n: The modulus value (must be a positive integer).
+    :return: A FiniteAutomaton instance representing the mod-n FSM.
+    :raises ModulusError: If n is not a positive integer.
+    """
+    if n <= 0:
+        logger.error("Invalid modulus value: %d", n)
+        raise ModulusError(n)
+
+    Q = {f"S{i}" for i in range(n)}
+    Σ = {"0", "1"}
+    q0 = "S0"
+    F = Q
+    δ = {}
+
+    for i in range(n):
+        for bit in (0, 1):
+            next_state = (2 * i + bit) % n
+            δ[(f"S{i}", str(bit))] = f"S{next_state}"
+
+    logger.info("Built mod-%d FSM with %d states.", n, len(Q))
+    return FiniteAutomaton(Q, Σ, q0, F, δ)

@@ -4,6 +4,8 @@ from fsm import (
     FiniteAutomaton,
     InvalidStateError,
     InvalidSymbolError,
+    ModulusError,
+    build_mod_n_fa,
 )
 
 
@@ -79,3 +81,11 @@ def test_accepts_method():
     assert fa.accepts("1") is True
     assert fa.accepts("0") is False
 
+def test_build_mod_n_fa():
+    fa = build_mod_n_fa(3)
+    assert fa.run("101") in {"S0", "S1", "S2"}
+    assert fa.accepts("101") is True
+
+def test_invalid_modulus():
+    with pytest.raises(ModulusError):
+        build_mod_n_fa(0)
